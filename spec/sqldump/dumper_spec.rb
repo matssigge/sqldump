@@ -8,7 +8,7 @@ module Sqldump
     describe 'Dump' do
 
       it 'Executes the select and passes an open statement handle to the supplied block' do
-        dbh = create_dummy_database('/tmp/foo.sqlite')
+        dbh = create_dummy_database
 
         options = double('options')
         options.stub(:sql).and_return("select * from numbers")

@@ -1,3 +1,5 @@
+require 'dbi'
+
 module Sqldump
 
   class Connector
@@ -19,7 +21,7 @@ module Sqldump
 
     def get_url
       database = @options.database
-      "DBI:SQLIte3:#{database}"
+      "DBI:SQLite3:#{database}"
     end
 
   end

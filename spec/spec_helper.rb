@@ -3,7 +3,7 @@ require 'dbi'
 
 class Object
 
-  def create_dummy_database(database)
+  def create_dummy_database(database = '/tmp/foo.sqlite')
     File.delete(database) if File.exists?(database)
 
     dbh = DBI.connect("DBI:SQLite3:#{database}")
