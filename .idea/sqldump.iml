@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RUBY_MODULE" version="4">
+  <component name="GemRequirementsHolder" version="3">
+    <requirement>
+      <requirement>
+        <dependency name="dbi" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source manual="true" />
+    </requirement>
+    <requirement>
+      <requirement>
+        <dependency name="deprecated" version="0" bound="GREATER_OR_EQUAL" git="false" path="false" doRequire="true" />
+      </requirement>
+      <source manual="true" />
+    </requirement>
+  </component>
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rspec (v2.6.0, /Users/mats/.rvm/gems/ruby-1.9.2-p136@global/gems/rspec-2.6.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] builder (v3.0.0, /Users/mats/.rvm/gems/ruby-1.9.2-p136/gems/builder-3.0.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] diff-lcs (v1.1.2, /Users/mats/.rvm/gems/ruby-1.9.2-p136/gems/diff-lcs-1.1.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] term-ansicolor (v1.0.6, /Users/mats/.rvm/gems/ruby-1.9.2-p136/gems/term-ansicolor-1.0.6)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rspec-core (v2.6.4, /Users/mats/.rvm/gems/ruby-1.9.2-p136/gems/rspec-core-2.6.4)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rspec-expectations (v2.6.0, /Users/mats/.rvm/gems/ruby-1.9.2-p136@global/gems/rspec-expectations-2.6.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rspec-mocks (v2.6.0, /Users/mats/.rvm/gems/ruby-1.9.2-p136/gems/rspec-mocks-2.6.0)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] aruba (v0.4.6, /Users/mats/.rvm/gems/ruby-1.9.2-p136/gems/aruba-0.4.6)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] bcat (v0.6.1, /Users/mats/.rvm/gems/ruby-1.9.2-p136/gems/bcat-0.6.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] childprocess (v0.2.1, /Users/mats/.rvm/gems/ruby-1.9.2-p136/gems/childprocess-0.2.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] ffi (v1.0.9, /Users/mats/.rvm/gems/ruby-1.9.2-p136/gems/ffi-1.0.9)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rack (v1.2.1, /Users/mats/.rvm/gems/ruby-1.9.2-p136/gems/rack-1.2.1)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] rdiscount (v1.6.8, /Users/mats/.rvm/gems/ruby-1.9.2-p136/gems/rdiscount-1.6.8)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] cucumber (v1.0.2, /Users/mats/.rvm/gems/ruby-1.9.2-p136/gems/cucumber-1.0.2)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] gherkin (v2.4.5, /Users/mats/.rvm/gems/ruby-1.9.2-p136/gems/gherkin-2.4.5)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] gherkin (v2.4.5, /Users/mats/.rvm/gems/ruby-1.9.2-p136/gems/gherkin-2.4.5)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] json (v1.5.3, /Users/mats/.rvm/gems/ruby-1.9.2-p136/gems/json-1.5.3)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] dbi (v0.4.5, /Users/mats/.rvm/gems/ruby-1.9.2-p136/gems/dbi-0.4.5)" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="[gem] deprecated (v2.0.1, /Users/mats/.rvm/gems/ruby-1.9.2-p136/gems/deprecated-2.0.1)" level="application" />
+  </component>
+</module>
+

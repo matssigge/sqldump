@@ -1,0 +1,13 @@
+#!/Users/mats/.rvm/rubies/ruby-1.9.2-p136/bin/ruby
+$LOAD_PATH << File.expand_path('../../lib', __FILE__)
+require 'sqldump'
+
+options = Options.new(ARGV)
+connector = Connector.new(options)
+connector.connect do |dbh|
+  dumper = Dumper.new(dbh)
+  dumper.dump do |sth|
+    formatter = Formatter.new(sth, options)
+    formatter.output
+  end
+end
