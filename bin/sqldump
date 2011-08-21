@@ -1,4 +1,4 @@
-#!/Users/mats/.rvm/rubies/ruby-1.9.2-p136/bin/ruby
+#!/usr/bin/env ruby
 $LOAD_PATH << File.expand_path('../../lib', __FILE__)
 require 'sqldump'
 
@@ -7,7 +7,7 @@ connector = Sqldump::Connector.new(options)
 connector.connect do |dbh|
   dumper = Sqldump::Dumper.new(dbh, options)
   dumper.dump do |sth|
-    formatter = Sqldump::Formatter.new(sth, STDOUT, options)
+    formatter = Sqldump::Formatter.formatter(sth, STDOUT, options)
     formatter.output
   end
 end

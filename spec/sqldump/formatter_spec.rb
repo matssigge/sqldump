@@ -3,28 +3,28 @@ require 'spec_helper'
 
 module Sqldump
 
-  describe "Formatter" do
+  describe Formatter do
 
-    describe "Raw output" do
+    context "dump_mode is :csv" do
 
-      let(:sth) do
-        dbh = create_dummy_database
-        dbh.execute "select * from numbers"
-      end
-
-      it "prints column values verbatim, semicolon-separated, to supplied IO object" do
-        strio = StringIO.new
-
-        options = double("Output")
-        formatter = Formatter.new(sth, strio, options)
-        formatter.output
-        strio.close
-        strio.string.should == "42\n"
-
+      it "creates a RawFormatter" do
+        options = double("Options")
+        options.stub(:dump_mode).and_return(:csv)
+        formatter = Formatter.formatter(nil, nil, options)
+        formatter.class.should == RawFormatter
       end
 
     end
 
+    context "dump_mode is :insert" do
+
+      it "creates an InsertFormatter" do
+        options = double("Options")
+        options.stub(:dump_mode).and_return(:insert)
+        formatter = Formatter.formatter(nil, nil, options)
+        formatter.class.should == InsertFormatter
+      end
+    end
   end
 
 end
