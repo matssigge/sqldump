@@ -1,6 +1,6 @@
 module Sqldump
 
-  class RawFormatter
+  class CsvFormatter
 
     def initialize(sth, io, options)
       @sth = sth

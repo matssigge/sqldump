@@ -1,0 +1,8 @@
+Version 0.0.1
+-------------
+
+Initial version.
+- Very simple INSERT support.
+- CSV support.
+- SQLite3
+- PostgreSQL

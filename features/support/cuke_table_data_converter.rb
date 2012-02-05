@@ -42,7 +42,9 @@ class CukeTableDataConverter
   end
 
   def as_sql_literal(value)
-    if (value =~ /[^0-9]/ || value =~ /^0./)
+    if value == '<null>'
+      'NULL'
+    elsif (value =~ /[^0-9]/ || value =~ /^0./)
       "'#{value}'"
     else
       value

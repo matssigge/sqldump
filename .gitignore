@@ -1,3 +1,9 @@
 foo.sqlite
 tmp
 .idea
+doc
+*.gem
+.bundle
+Gemfile.lock
+pkg/*
+*~

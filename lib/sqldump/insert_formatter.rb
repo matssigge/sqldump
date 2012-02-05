@@ -41,12 +41,16 @@ module Sqldump
     end
 
     def quote(value, column_name)
-      type = column_type(column_name)
-      if type == DBI::Type::Integer or type == DBI::Type::Float or type == DBI::Type::Decimal
-        value
+      if value.nil?
+        "NULL"
       else
-        value = value.to_s.gsub(/'/, "''")
-        "'#{value}'"
+        type = column_type(column_name)
+        if type == DBI::Type::Integer or type == DBI::Type::Float or type == DBI::Type::Decimal
+          value
+        else
+          value = value.to_s.gsub(/'/, "''")
+          "'#{value}'"
+        end
       end
     end
 

@@ -4,7 +4,7 @@ require 'dbi'
 
 module Sqldump
 
-  describe "RawFormatter" do
+  describe "CsvFormatter" do
 
     def formatter_example(csv_header_option, expected_result)
       strio = StringIO.new
@@ -12,7 +12,7 @@ module Sqldump
       options = double("Options")
       options.stub(:csv_header).and_return(csv_header_option)
 
-      formatter = RawFormatter.new(@sth, strio, options)
+      formatter = CsvFormatter.new(@sth, strio, options)
       formatter.output
       strio.close
       strio.string.should == expected_result

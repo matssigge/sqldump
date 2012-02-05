@@ -10,4 +10,19 @@ Feature: dump data from different database types (e.g. MySQL, PostgreSQL, SQLite
 
   Scenario: MySQL
 
+  Scenario: SQL Server
+
   Scenario: PostgreSQL
+    Given a PostgreSQL database named "numbers" on "localhost"
+    And a table "numbers" with the following data
+      | number[int] |
+      | 17          |
+      | 42          |
+      | 4711        |
+    When I run `sqldump -T postgresql -d numbers -S localhost -U mats numbers`
+    Then it should pass with:
+    """
+    17
+    42
+    4711
+    """
