@@ -46,6 +46,27 @@ Questions or problems? Please post them on the [issue tracker](https://github.co
 
 This gem is created by Mats Sigge and is under the MIT License.
 
+## Roadmap
+
+###Immediate goals
+* More databases. At least MySQL and SQL Server.
+* Selecting only some columns
+* Support for UPDATEs
+* Pretty-printing SQL on multiple lines
+* Suppressing NULL columns in output
+* Handling auto-incrementing columns, e.g. nextval('sequence_name') in PostgreSQL
+
+###Longer-term goals / pipe dreams
+* Configuration system, e.g. .sqldump file
+** Default user, password, host, database
+* "Column handlers", e.g. some way of saying that the column CREATED_AT should get the value now() or getDate() instead of whatever value is actually in the database.
+* Other hooks, e.g. being able to append `SELECT @id = @@IDENTITY` after a select on SQL Server.
+
+###Done
+* Initial support for dumping INSERTs
+* Support for SQLite3
+* Support for PostgreSQL
+
 ## History
 
 Once, at a company where I worked, there was a whole lot of DB scripting. So much that I got tired of writing all that SQL by hand. At first, there were some SQL scripts that generated SQL as output, i.e. something like 
