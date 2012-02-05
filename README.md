@@ -10,7 +10,11 @@ Just install the gem with
 $ gem install sqldump
 ```
 
-This will make the executable `sqldump` available from your command line.
+This will make the executable `sqldump` available from your command line. SQLite3 is a direct dependency and is installed if you don't already have it. Other drivers must be installed manually. E.g.
+
+```bash
+$ gem install pg
+```
 
 **Requires Ruby 1.9.2 or later.**
 
@@ -50,11 +54,13 @@ This gem is created by Mats Sigge and is under the MIT License.
 
 ###Immediate goals
 * More databases. At least MySQL and SQL Server.
-* Selecting only some columns
-* Support for UPDATEs
-* Pretty-printing SQL on multiple lines
-* Suppressing NULL columns in output
-* Handling auto-incrementing columns, e.g. nextval('sequence_name') in PostgreSQL
+* Ability to specify custom connection string parameters (or entire connection string).
+* Selecting only some columns.
+* Support for UPDATEs.
+* Pretty-printing SQL.
+* Suppressing NULL columns in output.
+* Handling auto-incrementing columns, e.g. nextval('sequence_name') in PostgreSQL.
+* If possible, detecting if the specified DBD driver is installed, to give a better error message.
 
 ###Longer-term goals / pipe dreams
 * Configuration system, e.g. .sqldump file
