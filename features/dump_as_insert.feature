@@ -21,3 +21,20 @@ Feature: dump data as INSERT statements
     """
     INSERT INTO number (number) VALUES (NULL);
     """
+
+  Scenario: pretty print
+    Given a database "foo.sqlite" with a table "numbers_and_strings" with the following data
+      | number[int] | string |
+      | 42          | thingy |
+    When I run `sqldump -d foo.sqlite -it numbers_and_strings`
+    Then it should pass with:
+    """
+    INSERT INTO numbers_and_strings (
+        number,
+        string
+    )
+    VALUES (
+        42,
+        'thingy'
+    );
+    """

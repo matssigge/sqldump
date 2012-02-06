@@ -8,11 +8,14 @@ module Sqldump
 
     describe "#output" do
 
-      def formatter_example(expected_result)
+      def formatter_example(expected_result, options = nil)
         strio = StringIO.new
 
-        options = double("Options")
-        options.stub(:table).and_return('numbers_and_strings')
+        unless options
+          options = double("Options")
+          options.stub(:table).and_return('numbers_and_strings')
+          options.stub(:pretty).and_return(false)
+        end
 
         formatter = InsertFormatter.new(@sth, strio, options)
         formatter.output
@@ -35,6 +38,22 @@ module Sqldump
 
       it "creates an insert statement for each row of the table" do
         formatter_example("INSERT INTO numbers_and_strings (number, string) VALUES (42, 'thingy');\n")
+      end
+
+      it "pretty-prints output with the pretty option" do
+        options = double("options")
+        options.stub(:table).and_return('numbers_and_strings')
+        options.stub(:pretty).and_return(true)
+        formatter_example(<<"EOT", options)
+INSERT INTO numbers_and_strings (
+    number,
+    string
+)
+VALUES (
+    42,
+    'thingy'
+);
+EOT
       end
 
     end

@@ -62,7 +62,7 @@ module Sqldump
 
     end
 
-    describe 'username' do
+    describe '-U --username' do
       it 'sets the username to nil if not specified' do
         options = make_options([])
         options.username.should be_nil
@@ -74,7 +74,7 @@ module Sqldump
       end
     end
 
-    describe 'password' do
+    describe '-P --password' do
       it 'sets the password to nil if not specified' do
         options = make_options([])
         options.password.should be_nil
@@ -93,7 +93,7 @@ module Sqldump
       end
     end
 
-    describe 'csv header option' do
+    describe '-H --header : csv header option' do
       it "the csv_header flag is false by default" do
         options = make_options([])
         options.csv_header.should be_false
@@ -105,13 +105,19 @@ module Sqldump
       end
     end
 
-    describe 'insert mode option' do
+    describe '-i --insert : insert mode option' do
       it "sets the mode to :insert" do
         options = make_options(%w(-i table))
         options.dump_mode.should == :insert
       end
     end
 
+    describe '-t --pretty : pretty print option' do
+      it "sets the pretty flag" do
+        options = make_options(%w(-t))
+        options.pretty.should be_true
+      end
+    end
   end
 
 end

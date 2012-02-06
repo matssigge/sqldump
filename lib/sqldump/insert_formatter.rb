@@ -18,8 +18,15 @@ module Sqldump
       @column_type_by_name[column_name]
     end
 
+    def output_list(list)
+      @io.print "\n#{indent}" if pretty
+      join_string = pretty ? ",\n#{indent}" : ", "
+      @io.print list.join(join_string)
+      @io.print "\n" if pretty
+    end
+
     def output_column_names
-      @io.print @sth.column_names.join(", ")
+      output_list(@sth.column_names)
     end
 
     def output_values(row)
@@ -27,14 +34,17 @@ module Sqldump
       row.each_with_name do |value, column_name|
         quoted_list.push quote(value, column_name)
       end
-      @io.print quoted_list.join(", ")
+      output_list(quoted_list)
+      #@io.print quoted_list.join(", ")
     end
 
     def output
       @sth.fetch do |row|
         @io.print("INSERT INTO #{@options.table} (")
         output_column_names()
-        @io.print ") VALUES ("
+        @io.print ")"
+        @io.print pretty ? "\n" : " "
+        @io.print "VALUES ("
         output_values(row)
         @io.print ");\n"
       end
@@ -52,6 +62,14 @@ module Sqldump
           "'#{value}'"
         end
       end
+    end
+
+    def indent
+      " " * 4
+    end
+
+    def pretty
+      @options.pretty
     end
 
   end

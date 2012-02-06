@@ -1,4 +1,10 @@
-Version 0.0.1
+Version 0.0.3
+-------------
+
+- Added pretty print option for SQL output.
+
+
+Version 0.0.2
 -------------
 
 New

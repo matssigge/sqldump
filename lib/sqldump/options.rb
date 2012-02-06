@@ -15,6 +15,7 @@ module Sqldump
     attr_accessor :sql
     attr_accessor :csv_header
     attr_accessor :dump_mode
+    attr_accessor :pretty
 
     def initialize(argv)
       parse_options(argv)
@@ -83,6 +84,10 @@ module Sqldump
 
         opts.on('-i', '--insert', 'Dump data as INSERT statements.') do
           self.dump_mode = :insert
+        end
+
+        opts.on('-t', '--pretty', 'Pretty-print SQL output (i.e. columns on separate lines, indentation).') do
+          self.pretty = true
         end
 
         opts.on('-H', '--header', 'Include column names in csv mode.') do

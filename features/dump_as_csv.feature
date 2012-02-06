@@ -1,7 +1,7 @@
 Feature: dump as csv
 
   The default mode of operation of sqldump is to output data in CSV
-√
+
   Scenario: one-column, one-row table
     Given a database "foo.sqlite" with a table "number" with the following data
       | number[int] |

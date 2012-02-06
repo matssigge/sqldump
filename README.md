@@ -55,7 +55,6 @@ This gem is created by Mats Sigge and is under the MIT License.
 ###Immediate goals
 * Selecting only some columns.
 * Support for UPDATEs.
-* Pretty-printing SQL.
 * Suppressing NULL columns in output.
 * Handling auto-incrementing columns, e.g. nextval('sequence_name') in PostgreSQL.
 * ODBC driver to enable SQL Server.
@@ -73,6 +72,7 @@ This gem is created by Mats Sigge and is under the MIT License.
 * Support for SQLite3
 * Support for PostgreSQL
 * Support for MySQL
+* Pretty-printing SQL.
 
 
 ## History
