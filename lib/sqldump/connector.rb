@@ -20,9 +20,12 @@ module Sqldump
     end
 
     def get_url
-      database = @options.database
       driver = get_driver
-      "DBI:#{driver}:#{database}"
+      url = "DBI:#{driver}:#{@options.database}"
+      if use_host
+        url += ":#{@options.host}"
+      end
+      url
     end
 
     def get_driver
@@ -31,7 +34,15 @@ module Sqldump
           "SQLite3"
         when :postgresql
           "Pg"
+        when :mysql
+          "Mysql"
+        else
+          raise "Unknown database type " + @options.database_type
       end
+    end
+
+    def use_host
+      @options.database_type != :sqlite3
     end
 
     def get_user

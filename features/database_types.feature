@@ -19,7 +19,7 @@ Feature: dump data from different database types (e.g. MySQL, PostgreSQL, SQLite
       | 17          |
       | 42          |
       | 4711        |
-    When I run `sqldump -T postgresql -d numbers -S localhost -U mats numbers`
+    When I run `sqldump -T postgresql -d numbers -S localhost -U sqldump -P sqldump numbers`
     Then it should pass with:
     """
     17

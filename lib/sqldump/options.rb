@@ -4,6 +4,8 @@ module Sqldump
 
   class Options
 
+    SUPPORTED_DATABASES = ['postgresql', 'mysql', 'sqlite3']
+
     attr_accessor :database
     attr_accessor :host
     attr_accessor :username
@@ -70,7 +72,12 @@ module Sqldump
         end
 
         opts.on('-T', '--dbtype TYPE', 'Specify the type of database to connect to. Supported types are sqlite3, postgresql/pg.') do |type|
+          type.downcase!
           type = 'postgresql' if type == 'pg'
+          unless SUPPORTED_DATABASES.include?(type)
+            puts "Unsupported database type #{type}"
+            exit
+          end
           self.database_type = type.to_sym
         end
 

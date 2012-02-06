@@ -15,13 +15,12 @@ def drop_database_if_exists(driver, host, database, username, password)
 end
 
 def get_driver_string(driver)
-  driver_string = case driver
-                    when :sqlite3
-                      "SQLite3"
-                    when :postgresql
-                      "Pg"
-                  end
-  driver_string
+  case driver
+    when :sqlite3
+      "SQLite3"
+    when :postgresql
+      "Pg"
+  end
 end
 
 def create_and_connect_to_database(driver, host, database, username, password, &block)
@@ -48,8 +47,8 @@ def create_database(driver, host, database, username, password)
 end
 
 def create_dummy_database_with_data(driver, host, database, table_name, table_data)
-  username = 'mats'
-  password = nil
+  username = 'sqldump'
+  password = 'sqldump'
 
   in_current_dir do
     drop_database_if_exists(driver, host, database, username, password)

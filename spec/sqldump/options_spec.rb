@@ -54,6 +54,12 @@ module Sqldump
         options = make_options(%w(-T pg))
         options.database_type.should == :postgresql
       end
+
+      it 'sets the type to mysql if specified' do
+        options = make_options(%w(-T mysql))
+        options.database_type.should == :mysql
+      end
+
     end
 
     describe 'username' do

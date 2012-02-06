@@ -53,13 +53,13 @@ This gem is created by Mats Sigge and is under the MIT License.
 ## Roadmap
 
 ###Immediate goals
-* More databases. At least MySQL and SQL Server.
-* Ability to specify custom connection string parameters (or entire connection string).
 * Selecting only some columns.
 * Support for UPDATEs.
 * Pretty-printing SQL.
 * Suppressing NULL columns in output.
 * Handling auto-incrementing columns, e.g. nextval('sequence_name') in PostgreSQL.
+* ODBC driver to enable SQL Server.
+* Ability to specify custom connection string parameters (or entire connection string).
 * If possible, detecting if the specified DBD driver is installed, to give a better error message.
 
 ###Longer-term goals / pipe dreams
@@ -72,6 +72,8 @@ This gem is created by Mats Sigge and is under the MIT License.
 * Initial support for dumping INSERTs
 * Support for SQLite3
 * Support for PostgreSQL
+* Support for MySQL
+
 
 ## History
 

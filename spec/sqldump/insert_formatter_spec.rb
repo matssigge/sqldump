@@ -62,6 +62,10 @@ module Sqldump
         @formatter.quote(17, "number").should == 17
       end
 
+      it "returns NULL on a nil value" do
+        @formatter.quote(nil, "string").should == "NULL"
+      end
+
     end
 
   end

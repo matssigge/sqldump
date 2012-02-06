@@ -7,8 +7,9 @@ module Sqldump
 
     before(:each) do
       @options = double('options')
-      @options.stub(:database).and_return('database')
       @options.stub(:database_type).and_return(:sqlite3)
+      @options.stub(:database).and_return('database')
+      @options.stub(:host).and_return('localhost')
       @options.stub(:username).and_return(nil)
       @options.stub(:password).and_return(nil)
     end
@@ -40,7 +41,22 @@ module Sqldump
         @options.stub(:database_type).and_return(:postgresql)
 
         connector = Connector.new(@options)
-        connector.get_url.should == 'DBI:Pg:numbers'
+        connector.get_url.should == 'DBI:Pg:numbers:localhost'
+      end
+
+      it 'uses the Mysql driver when mysql is specified' do
+        @options.stub(:database).and_return('numbers')
+        @options.stub(:database_type).and_return(:mysql)
+
+        connector = Connector.new(@options)
+        connector.get_url.should == 'DBI:Mysql:numbers:localhost'
+      end
+
+      it "doesn't include the host for SQLite3" do
+        @options.stub(:database).and_return('numbers')
+
+        connector = Connector.new(@options)
+        connector.get_url.should == 'DBI:SQLite3:numbers'
       end
     end
 
