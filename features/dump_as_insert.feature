@@ -38,3 +38,14 @@ Feature: dump data as INSERT statements
         'thingy'
     );
     """
+
+  Scenario: suppress nulls
+    Given a database "foo.sqlite" with a table "numbers_and_strings" with the following data
+      | number[int] | string |
+      | 42          | <null> |
+    When I run `sqldump -d foo.sqlite -il numbers_and_strings`
+    Then it should pass with:
+    """
+    INSERT INTO numbers_and_strings (number) VALUES (42);
+    """
+    

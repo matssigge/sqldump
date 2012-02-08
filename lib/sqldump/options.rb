@@ -16,6 +16,7 @@ module Sqldump
     attr_accessor :csv_header
     attr_accessor :dump_mode
     attr_accessor :pretty
+    attr_accessor :suppress_nulls
 
     def initialize(argv)
       parse_options(argv)
@@ -88,6 +89,10 @@ module Sqldump
 
         opts.on('-t', '--pretty', 'Pretty-print SQL output (i.e. columns on separate lines, indentation).') do
           self.pretty = true
+        end
+
+        opts.on('-l', '--suppress-nulls', 'Suppresses null columns in insert mode.') do
+          self.suppress_nulls = true
         end
 
         opts.on('-H', '--header', 'Include column names in csv mode.') do

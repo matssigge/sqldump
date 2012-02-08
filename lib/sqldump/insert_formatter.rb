@@ -25,10 +25,6 @@ module Sqldump
       @io.print "\n" if pretty
     end
 
-    def output_column_names
-      output_list(@sth.column_names)
-    end
-
     def output_values(row)
       quoted_list = []
       row.each_with_name do |value, column_name|
@@ -38,14 +34,27 @@ module Sqldump
       #@io.print quoted_list.join(", ")
     end
 
+    def cols_and_values(row)
+      cols = []
+      values = []
+      row.each_with_name do |value, column_name|
+        unless @options.suppress_nulls && value.nil?
+          cols.push column_name
+          values.push quote(value, column_name)
+        end
+      end
+      [cols, values]
+    end
+
     def output
       @sth.fetch do |row|
+        (cols, values) = cols_and_values(row)
         @io.print("INSERT INTO #{@options.table} (")
-        output_column_names()
+        output_list(cols)
         @io.print ")"
         @io.print pretty ? "\n" : " "
         @io.print "VALUES ("
-        output_values(row)
+        output_list(values)
         @io.print ");\n"
       end
     end

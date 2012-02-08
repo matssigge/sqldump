@@ -118,6 +118,13 @@ module Sqldump
         options.pretty.should be_true
       end
     end
+
+    describe '-l --suppress-nulls option' do
+      it "sets the suppress_nulls flag" do
+        options = make_options(%w(-l))
+        options.suppress_nulls.should be_true
+      end
+    end
   end
 
 end

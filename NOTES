@@ -1,0 +1,3 @@
+To run the Cucumber features, you will need a local PostgreSQL installation 
+and a user "sqldump" with password "sqldump". The sqldump user must have
+the CREATE_DB attribute.

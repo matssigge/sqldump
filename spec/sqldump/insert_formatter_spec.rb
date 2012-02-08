@@ -8,14 +8,18 @@ module Sqldump
 
     describe "#output" do
 
-      def formatter_example(expected_result, options = nil)
+      let :options do
+        options = double("Options")
+        options.stub(:table).and_return('numbers_and_strings')
+        options.stub(:pretty).and_return(false)
+        options.stub(:suppress_nulls).and_return(false)
+        options
+      end
+
+      def formatter_example(expected_result, opts = nil)
         strio = StringIO.new
 
-        unless options
-          options = double("Options")
-          options.stub(:table).and_return('numbers_and_strings')
-          options.stub(:pretty).and_return(false)
-        end
+        opts ||= options
 
         formatter = InsertFormatter.new(@sth, strio, options)
         formatter.output
@@ -41,8 +45,6 @@ module Sqldump
       end
 
       it "pretty-prints output with the pretty option" do
-        options = double("options")
-        options.stub(:table).and_return('numbers_and_strings')
         options.stub(:pretty).and_return(true)
         formatter_example(<<"EOT", options)
 INSERT INTO numbers_and_strings (
@@ -56,6 +58,13 @@ VALUES (
 EOT
       end
 
+      it "removes null columns and values with the suppress nulls option" do
+        options.stub(:suppress_nulls).and_return(true)
+        @dbh.do("update numbers_and_strings set string = null")
+        @sth.finish
+        @sth = @dbh.execute "select * from numbers_and_strings"
+        formatter_example("INSERT INTO numbers_and_strings (number) VALUES (42);\n", options)
+      end
     end
 
     describe "#quote" do
