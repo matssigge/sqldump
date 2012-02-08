@@ -17,6 +17,7 @@ module Sqldump
     attr_accessor :dump_mode
     attr_accessor :pretty
     attr_accessor :suppress_nulls
+    attr_accessor :columns_to_select
 
     def initialize(argv)
       parse_options(argv)
@@ -27,7 +28,7 @@ module Sqldump
     def set_derived_options(argv)
       self.table = argv[0]
 
-      self.sql = "select * from " + argv.join(" ")
+      self.sql = "select #{columns_to_select} from " + argv.join(" ")
     end
 
     def parse_options(argv)
@@ -43,6 +44,7 @@ module Sqldump
       self.dump_mode = :csv
       self.database_type = :sqlite3
       self.host = 'localhost'
+      self.columns_to_select = '*'
     end
 
     def define_options
@@ -93,6 +95,10 @@ module Sqldump
 
         opts.on('-l', '--suppress-nulls', 'Suppresses null columns in insert mode.') do
           self.suppress_nulls = true
+        end
+
+        opts.on('-s', '--select-columns COLUMN[,COLUMN...]', 'Specifies which columns to select.') do |columns|
+          self.columns_to_select = columns
         end
 
         opts.on('-H', '--header', 'Include column names in csv mode.') do

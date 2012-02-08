@@ -13,6 +13,7 @@ module Sqldump
         options.stub(:table).and_return('numbers_and_strings')
         options.stub(:pretty).and_return(false)
         options.stub(:suppress_nulls).and_return(false)
+        options.stub(:columns_to_select).and_return("*")
         options
       end
 

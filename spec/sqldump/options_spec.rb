@@ -125,6 +125,14 @@ module Sqldump
         options.suppress_nulls.should be_true
       end
     end
+
+    describe '-s --select-columns option' do
+      it "sets the selected columns" do
+        options = make_options(%w(-s foo,bar))
+        options.columns_to_select.should == "foo,bar"
+        options.sql.should == "select foo,bar from table"
+      end
+    end
   end
 
 end

@@ -48,4 +48,13 @@ Feature: dump data as INSERT statements
     """
     INSERT INTO numbers_and_strings (number) VALUES (42);
     """
-    
+
+  Scenario: select specific columns
+    Given a database "foo.sqlite" with a table "numbers_strings_and_things" with the following data
+      | number[int] | string | thing |
+      | 42          | foo    | bar   |
+    When I run `sqldump -d foo.sqlite -is "number,thing" numbers_strings_and_things`
+    Then it should pass with:
+    """
+    INSERT INTO numbers_strings_and_things (number, thing) VALUES (42, 'bar');
+    """
