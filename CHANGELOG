@@ -2,6 +2,7 @@ Version 0.0.4
 -------------
 
 - Added suppress nulls option for SQL output.
+- Added select columns option.
 
 
 Version 0.0.3
